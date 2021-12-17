@@ -46,38 +46,3 @@ nav li ul li:hover {
     background-color:red;
 }
 
-i{
-    color:white;
-    font-size:3rem;
-    pointer-events:auto;
-    cursor:pointer;
-}
-
-.slider {
-    position:relative;
-    left:10%;
-    top:30%;
-    width:80%;
-    height:200px;
-    overflow:hidden;
-}
-
-.slider-inner {
-    position:absolute;
-    top:0;
-    left:0;
-    height:100%;
-    width:200%;
-    display:grid;
-    grid-template-columns: repeat(7,1fr);
-    gap:5px;
-    pointer-events: none;
-}
-
-.slider-img {
-    height:100%;
-    background-color:black;
-    text-align:center;
-    color: white;
-    padding:3rem;
-}
