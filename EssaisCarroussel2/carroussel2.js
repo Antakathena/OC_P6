@@ -1,3 +1,5 @@
+console.log("OK");
+
 //Global var
 const $prevBtn = $('.prev-image')
 const $nextBtn = $('.next-image')
