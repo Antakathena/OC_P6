@@ -2,14 +2,31 @@
 
 <head>
     <title>JustStreamIt</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <script src="C:\Users\galatee\OpenClassroom\P6\OC_P6\scripts\carousel.js"> </script>
+    <script src="C:\Users\galatee\OpenClassroom\P6\OC_P6\scripts\modale.js"> </script>
+    <link rel="stylesheet" href="css\style2.css" />
 </head>
+<!--JustStreamIt + Accueil+Catégories-->
+<!--“Meilleur film” Video jouable ?: titre de la vidéo + image de la vidéo + bouton play + le résumé du film sous le bouton-->
+<!--Films les mieux notés : carroussel de 7 images, dont 4 affichées, chaque image = modale si on clique-->
+<!--idem pour 3 catégories au choix : carroussel de 7 images, dont 4 affichées, chaque image = modale si on clique-->
+
+<!--chaque image = modale si on clique. Dans la modale, afficher :
+L’image de la pochette du film
+Le Titre du film
+Le genre complet du film
+Sa date de sortie
+Son Rated
+Son score Imdb
+Son réalisateur
+La liste des acteurs
+Sa durée
+Le pays d’origine
+Le résultat au Box Office
+Le résumé du film-->
+
 
 <body>
     <header>
@@ -43,53 +60,84 @@
         </nav>
     </header>
 
+    <h2>Meilleur Film</h2>
+    <div class="modal-content">
+        <div class="modal-header">
+            <!-- <span class="close">&times;</span> -->
 
+        </div>
+        <div class="modal-body">
+            <h3>Titre du film</h3>
+            <p>Résumé</p>
+        </div>
+        <!-- Trigger/Open The Modal -->
+        <div class="modal-footer">
+            <button id="myBtn"><img src="C:\Users\galatee\OpenClassroom\P6\OC_P6\imgcarroussel\img1.jpg"
+                    alt="img1"></button>
+            <!-- mettre les img dans la balise button pour que clic sur img = réaction -->
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Pochette du film, titre, genre, date...</p>
+        </div>
+
+    </div>
+
+    <h2>Films les mieux notés</h2>
     <article>
-        <h2>Films les mieux notés</h2>
 
-        <div class="slider">
-            <div class="slider-inner">
-                <div class="slider-img">
-                    <i class="fa-solid fa-candy-cane"></i>
-                </div>
-                <div class="slider-img">
-                    <i class="fa-solid fa-champagne-glasses"></i>
-                </div>
-                <div class="slider-img">
-                    <i class="fa-solid fa-cookie-bite"></i>
-                </div>
-                <div class="slider-img">
-                    <i class="fa-solid fa-gift"></i>
-                </div>
-                <div class="slider-img">
-                    <i class="fa-solid fa-gifts"></i>
-                </div>
-                <div class="slider-img">
-                    <i class="fa-solid fa-gingerbread-man"></i>
-                </div>
-                <div class="slider-img">
-                    <i class="fa-solid fa-hat-santa"></i>
-                </div>
+
+        <div class="carroussel" id="carroussel1">
+            <div class="container">
             </div>
+            <img src="images/bouton.png" class="bouton" id="g" />
+            <img src="images/bouton.png" class="bouton" id="d" />
         </div>
     </article>
 
+    <h2>Fantasy</h2>
     <article>
-        <h2>Fantasy</h2>
+
+
+        <div class="carroussel" id="carroussel2">
+            <div class="container">
+            </div>
+            <img src="images/bouton.png" class="bouton" id="g" />
+            <img src="images/bouton.png" class="bouton" id="d" />
+        </div>
 
 
     </article>
 
+    <h2>Sci-Fi</h2>
     <article>
-        <h2>Sci-Fi</h2>
 
-
-
+        <div class="carroussel" id="carroussel3">
+            <div class="container">
+            </div>
+            <img src="images/bouton.png" class="bouton" id="g" />
+            <img src="images/bouton.png" class="bouton" id="d" />
+        </div>
 
     </article>
 
+
+    <h2>Animation</h2>
     <article>
-        <h2>Animation</h2>
+
+
+        <div class="carroussel" id="carroussel4">
+            <div class="container">
+            </div>
+            <img src="images/bouton.png" class="bouton" id="g" />
+            <img src="images/bouton.png" class="bouton" id="d" />
+        </div>
 
 
     </article>
@@ -100,7 +148,7 @@
 
     </footer>
 
-    <script src="js/vanilla.js"></script>
+
 </body>
 
 </html>
