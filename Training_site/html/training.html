@@ -15,38 +15,50 @@
 <body>
     <h1>Entrainement aux réactions par Events en Js/Frontend</h1>
 
-    <!--
+
     <div class="input">
         <input type="text" id="champ" placeholder="user">
         <button class=btn id="btn1">GET Infos</button>
         <div id="output"></div>
-    </div>-->
+    </div>
 
-
-    <div class="clickEvent">
-        <button class=btn id="btn2">Cache Cache : cliquez ;-)</button>
+    <!-- <section>
+        <h2>Import Video utube :</h2>
+        <article>
+            <input type="text" id="input">
+        </article>
         <br>
-        <img src="..\assets\img.jpg" id="img" alt="Mana">
-    </div>
+        <div class="videoContainer">
+            <div id="video"></div>
+        </div>
+    </section> -->
 
-    <div class="clickEvent">
-        <button class=btn id="btn2">Cache Cache : cliquez ;-)</button>
-        <br>
-        <img src="..\assets\img.jpg" id="img" alt="Mana">
-    </div>
+    <section>
+        <h2>clickEvent :</h2>
+        <div class="clickEvent">
+            <button class=btn id="btn2">Cache Cache : cliquez ;-)</button>
+            <br>
+            <img src="..\assets\img.jpg" id="img-hidden" alt="Mana">
+        </div>
+    </section>
 
-    <div class="mouseEvent">
-        <div>Horizontal : <span class="horizontal">0</span></div>
-        <div>Vertical : <span class="vertical">0</span></div>
-    </div>
+    <section>
+        <h2>mouseEvent local :</h2>
+        <div id="example">
+            <p>This example uses the addEventListener() method to attach a "mousemove" event to a div element.</p>
+            <div class="rectangle" id="myDIV"></div>
+            <p>Mouse over the rectangle above, and get the coordinates of your mouse pointer.</p>
+            <p id="demo"></p>
+        </div>
+    </section>
 
-    <div id="example">
-        <p>This example uses the addEventListener() method to attach a "mousemove" event to a div element.</p>
-        <div class="rectangle" id="myDIV"></div>
-        <p>Mouse over the rectangle above, and get the coordinates of your mouse pointer.</p>
-        <p id="demo"></p>
-    </div>
-
+    <section>
+        <h2>mouseEvent global :</h2>
+        <div class="mouseEvent">
+            <div>Horizontal : <span class="horizontal">0</span></div>
+            <div>Vertical : <span class="vertical">0</span></div>
+        </div>
+    </section>
 
     <script src="..\java\training.js"></script>
     <!--si on met script dans head, il faut a priori

@@ -15,14 +15,13 @@ fetch("http://localhost:8000/api/v1/titles/")
 //on essaye le compteur:
 window.onload = (() => {
     let compteurs = document.getElementsByClassName("compteur");
-    let total_span_tag = document.getElementsByClassName("valeur totale")[0];
     let total = 0;
 
     console.log(compteurs);
     Array.prototype.forEach.call(compteurs, compteur => {
         let g = compteur.getElementsByClassName("moins")[0];
         let d = compteur.getElementsByClassName("plus")[0];
-        let span_tag = compteur.getElementsByClassName("span")[0];
+        let span_tag = compteur.getElementsByTagName("span")[0];
         console.log("ok");
         let value = 0;
         span_tag.textContent = value;
@@ -30,13 +29,13 @@ window.onload = (() => {
             value -= 1;
             total -= 1;
             span_tag.textContent = value;
-            total_span_tag.textContent = total;
+
         })
         d.onclick = (() => {
             value += 1;
             total += 1;
             span_tag.textContent = value;
-            total_span_tag.textContent = total;
+
         })
     });
 })

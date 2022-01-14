@@ -24,30 +24,37 @@ fetch("http://localhost:8000/api/v1/titles?min_year=2020&genre=fantasy")
     .then(reponse => reponse.json())
     .then(reponse2 => console.log(reponse2.results[0].image_url))
 
-// Depuis Github. Remarquer le console.table au lieu du console.log
-const btn1 = document.getElementById('btn1')
+
+/*Recup input et video utube : code d'integration*/
+// const input = document.getElementById('input')
+// const video = document.getElementById('video')
+// let link ="";
+
+// input.addEventListener('input', (e) => {
+//     console.log(e.target.value);
 
 
-// btn1.onclick = () => {
-//     fetch("https://api.github.com/users/" + champ.value)
-//         .then(reponse => reponse.json())
-//         .then(data => {
-//             output.textContent = ""; // pour que ça se vide à chaque requête
-//             output.textContent = `Compte de ${data.name}`;
-//             let avatar = document.createElement("avatar");
-//             avatar.src = data.avatar_url;
-//             avatar.width = "100"; // à faire en CSS
-//             output.appendChild(avatar)
-//         })
+//     video.innerHTML =
+//         `<iframe width="634" height="357" src=${link}\
+//     title="YouTube video player" frameborder="0" allow="accelerometer;\
+//     autoplay; clipboard-write; encrypted-media; gyroscope;\
+//     picture-in-picture" allowfullscreen></iframe>`;
+// })
+//         '<iframe width="1280" height="720"\
+// src="https://www.youtube.com/embed/QB1DTl7HFnc"\
+// title="YouTube video player" frameborder="0" allow="accelerometer;\
+// autoplay; clipboard-write; encrypted-media; gyroscope;\
+// picture-in-picture" allowfullscreen></iframe>'
+
 
 /*Toggle pour faire apparaitre et disparaitre l'image au click: */
 const btn2 = document.getElementById('btn2');
-const img = document.getElementById('img');
+const imgHidden = document.getElementById('img-hidden');
 
 btn2.addEventListener('click', () => {
-    console.log('yes!')
-    img.classList.toggle('show')
-})
+    console.log('yes!');
+    imgHidden.classList.toggle('show');
+});
 
 
 /*Pour afficher les mouvements de la souris dans un cadre déterminé:*/
@@ -63,11 +70,29 @@ function myFunction(e) {
 }
 
 
-/*Pour faire apparaître les infos de coordonnées dans la console au mvt de la souris:*/
-const mouseEvent = document.getElementById('mouseEvent');
-const horizontal = document.getElementById('horizontal');
-const vertical = document.getElementById('vertical');
+// Depuis Github. Remarquer le console.table au lieu du console.log
+const btn1 = document.getElementById('btn1')
 
-mouseEvent.addEventListener('mousemove', () => {
-    console.log('yes!');
-})
+btn1.onclick = (() => {
+    let url = "https://api.github.com/users/" + champ.value;
+    console.log(url);
+    fetch("https://api.github.com/users/" + champ.value)
+        .then(reponse => reponse.json())
+        .then(data => {
+            output.textContent = ""; // pour que ça se vide à chaque requête
+            output.textContent = `Compte de ${data.name}`;
+            let avatar = document.createElement("img");
+            avatar.src = data.avatar_url;
+            avatar.width = "100"; // à faire en CSS
+            output.appendChild(avatar)
+        })
+});
+
+/*Pour faire apparaître les infos de coordonnées dans la console au mvt de la souris:*/
+// const mouseEvent = document.getElementById('mouseEvent');
+// const horizontal = document.getElementById('horizontal');
+// const vertical = document.getElementById('vertical');
+
+// mouseEvent.addEventListener('mousemove', () => {
+//     console.log('yes!');
+// })
