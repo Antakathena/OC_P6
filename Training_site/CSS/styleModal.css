@@ -25,3 +25,12 @@ body, html {
     padding: 20px;
     background-color: white
 }
+
+h1 {
+    font-size: 2rem;
+}
+
+.js-modal {
+    font-size: 2rem;
+    color : rgb(34, 105, 133)
+}
