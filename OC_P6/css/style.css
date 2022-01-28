@@ -88,6 +88,10 @@ article {
     margin: 2rem;
 }
 
+#affiche {
+    background-color: brown;
+   }
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */

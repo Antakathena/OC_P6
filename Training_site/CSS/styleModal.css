@@ -6,7 +6,6 @@ body, html {
 * { box-sizing: border-box;}
 
 .modal {
-    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,6 +23,15 @@ body, html {
     max-height: calc(100vh - 20 px);
     padding: 20px;
     background-color: white
+}
+
+.modal-content {
+    background-color: brown;
+    height: 100%;
+}
+
+.modal-content p {
+    padding: 2rem;
 }
 
 h1 {

@@ -11,6 +11,15 @@ fetch("http://localhost:8000/api/v1/titles/")
         }
 */
 
+const affiche = document.getElementById("affiche");
+
+// fetch("http://localhost:8000/api/v1/titles/?year=&min_year=2020&sort_by=-imdb_score&country=USA")
+// .then(res => res.json())
+// .then(data => affiche.src = data[0].url);
+fetch("https://m.media-amazon.com/images/M/MV5BOGY3MzAyZDQtYTYyMS00ODI1LWEwYTEtMjU5MGFjZTYxZmQ4XkEyXkFqcGdeQXVyMjA0MzYwMDY@._V1_UX182_CR0,0,182,268_AL_.jpg")
+    .then(res => console.log(res))
+
+
 
 //on essaye le compteur:
 window.onload = (() => {
