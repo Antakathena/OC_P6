@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+<html>
 
 <head>
     <title>JustStreamIt</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="scripts\scriptP6.js"> </script>
-    <link rel="stylesheet" href="css\resetMeyer.css" />
-    <link rel="stylesheet" href="css\styleP6.css" />
+    <script src="scripts/scriptP6.js"> </script>
+    <link rel="stylesheet" href="css/resetMeyer.css" />
+    <link rel="stylesheet" href="css/styleP6.css" />
 </head>
 
 <body>
@@ -17,22 +18,22 @@
         <nav>
             <ul>
                 <li>
-                    <a href="index.html">Accueil</a>
+                    <a href="indexP6.html">Accueil</a>
                 </li>
                 <li>
-                    <a href="index.html">Catégories</a>
+                    <a href="indexP6.html">Catégories</a>
                     <ul>
                         <li>
-                            <a href="index.html">Mieux notés</a>
+                            <a href="indexP6.html">Mieux notés</a>
                         </li>
                         <li>
-                            <a href="index.html">Fantasy</a>
+                            <a href="indexP6.html">Fantasy</a>
                         </li>
                         <li>
-                            <a href="index.html">Sci-Fi</a>
+                            <a href="indexP6.html">Sci-Fi</a>
                         </li>
                         <li>
-                            <a href="index.html">Animation</a>
+                            <a href="indexP6.html">Animation</a>
                         </li>
 
                     </ul>
@@ -43,35 +44,70 @@
 
     <main>
         <section>
-            <h2>Section meilleur film</h2>
+            <h2>Meilleur film</h2>
             <article>
-                <img src="" alt="" id="img">
-
+                <div class="container" id="meilleur-film">
+                    <img src="" alt="" id="img1">
+                    <div id="infos-meilleur-film">
+                        <h3>informations sur le film :</h3>
+                        <dl>
+                            <dt>titre :</dt>
+                            <dd id="titre1"></dd>
+                            <dt>résumé :</dt>
+                            <dd id="résumé1"></dd>
+                        </dl>
+                    </div>
+                </div>
             </article>
         </section>
 
         <section>
-            <h2>Carroussels</h2>
-            <article><span>
+            <h2>Sélection (carroussels)</h2>
+            <article id="mieux-notés">
+                <div>
                     <h3>Mieux notés</h3>
-                </span></article>
-            <article><span>
+                </div>
+                <div class="container" id="carroussel1">
+                    <img src="assets/images/bouton.png" class="bouton g" />
+                    <img src="assets/images/bouton.png" class="bouton d" />
+                </div>
+            </article>
+            <article>
+                <div>
                     <h3>Fantasy</h3>
-                </span></article>
-            <article><span>
+                </div>
+                <div class="container" id="carroussel2">
+                    <img src="assets/images/bouton.png" class="bouton g" />
+                    <img src="assets/images/bouton.png" class="bouton d" />
+                </div>
+            </article>
+            <article>
+                <div>
                     <h3>Scy-Fi</h3>
-                </span></article>
-            <article><span>
+                </div>
+                <div class="container" id="carroussel3">
+                    <img src="assets/images/bouton.png" class="bouton g" />
+                    <img src="assets/images/bouton.png" class="bouton d" />
+                </div>
+            </article>
+            <article>
+                <div>
                     <h3>Animation</h3>
-                </span></article>
+                </div>
+                <div class="container" id="carroussel4">
+                    <img src="assets/images/bouton.png" class="bouton g" />
+                    <img src="assets/images/bouton.png" class="bouton d" />
+                </div>
+            </article>
 
 
         </section>
     </main>
 
     <footer>
-        <p>JustStreamIt</p>
+        <p id="footer">JustStreamIt</p>
     </footer>
+
 
 </body>
 
