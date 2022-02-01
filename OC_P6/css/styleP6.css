@@ -1,0 +1,168 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+header {
+margin-bottom: 50px;
+padding: 20px;
+background-color: rgb(112, 112, 112);
+display:flex;
+flex-wrap:wrap;
+justify-content: space-around;
+min-width: 100%;
+}
+
+
+nav ul {
+    list-style: none;
+}
+nav a {
+    text-decoration: none;
+    color:white;
+}
+nav {
+    color:#fff;
+    font-size:1.5rem;
+    font-family:sans-serif;
+    text-shadow: 2px 2px 0 rgb(0, 0, 0);
+}
+nav li ul {
+    margin:0;
+    padding:1rem;
+    background: grey;
+    display:none;
+    position:absolute;
+}
+nav li:hover ul {
+    display:block;
+}
+
+nav li ul li:hover {
+    background-color:red;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 0 rgb(0, 0, 0);
+}
+
+
+h2 {
+    padding: 20px;
+    font-size: 2.5rem;
+    border: white;
+    text-align: center;
+    justify-content: center;
+}
+
+h3 {
+    font-size: 2rem;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    justify-content: center;
+    }
+
+body {
+    margin:0;
+    align-items:center;
+    justify-content:center;
+    background-color: rgb(92, 173, 34);
+    background-size:cover;
+    height: 100% /*changé depuis vh pour un footer bien placé*/
+}
+
+main {
+    width: 85%;
+    min-height: 100%;
+    margin: 10px auto;
+    padding: 10px 40px;
+    position:relative;
+}
+
+footer {
+    bottom: 0;
+    padding: 20px;
+    background-color: grey;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    min-width: 100%;
+
+    }
+
+#footer {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.container{
+    width: auto;
+    height: 300px;
+    border:solid 4px rgb(139, 218, 102);
+    box-shadow: 0 0 14px rgba(0,0,0,0,3);
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    align-items: flex-start;
+}
+
+.container :first-child {
+    align-self: center;
+}
+
+#img {
+    height: 100%;
+    padding: 10px;
+}
+
+#infos-meilleur-film {
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.bouton {
+    position: absolute;
+    width: 70px;
+    cursor: pointer;
+    top:150px;
+}
+
+.g{
+    left:0;
+    opacity:0.4;
+    transform:rotate(0deg);
+    transition:3.0 s ease;
+}
+.d{
+    right:0;
+    opacity: 0.4;
+    transform:rotate(180deg);
+    transition:3.0 s ease;
+}
+
+.g:hover {
+    transform:rotate(0deg) scale(1.1);
+    opacity: 1;
+    transition:3.0 s ease;
+}
+
+.d:hover {
+    transform:rotate(180deg) scale(1.1);
+    opacity: 1;
+    transition:3.0 s ease;
+}
+
+#carroussel1 {
+    background-color: tomato;
+    width: auto;
+    height: 300px;
+}
+
+#meilleur-film {
+    background-color: tomato;
+}
