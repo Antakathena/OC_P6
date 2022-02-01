@@ -88,11 +88,9 @@ window.onload = () => {
     }
 
 
-
-
     var carroussel1 = document.getElementById('carroussel1');
     // Là on récupère toute la catégorie fantasy (voir dans l'inspecteur du navigateur l'onglet Network et la console)
-    fetch("http://localhost:8000/api/v1/titles?genre=fantasy&sort_by=-imdb_score")
+    fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
         .then(reponse => reponse.json())
         .then(reponse2 => {
             console.log(reponse2)
@@ -106,13 +104,20 @@ window.onload = () => {
         })
         .then(urlImages => carroussel(carroussel1, urlImages))// fonction carroussel qui transforme les images en carroussel
 
-    // Ici on récupère le titre du résultat n°1, puisque qu'on a des json normaux dans un array
-    // fetch("http://localhost:8000/api/v1/titles?min_year=2020&genre=fantasy")
-    //    .then(reponse => reponse.json())
-    //   .then(reponse2 => console.log(reponse2.results[0].title))
 
-
-
-
-
+    var carroussel2 = document.getElementById('carroussel2');
+    // Là on récupère toute la catégorie fantasy (voir dans l'inspecteur du navigateur l'onglet Network et la console)
+    fetch("http://localhost:8000/api/v1/titles?genre=fantasy&sort_by=-imdb_score")
+        .then(reponse => reponse.json())
+        .then(reponse2 => {
+            console.log(reponse2)
+            return reponse2
+        })
+        .then(reponse2 => {// pour chaque element(film) dans le json, récupérer l'image
+            urlImages = [];
+            reponse2.results.forEach(element => urlImages.push(element.image_url));
+            console.log(urlImages);
+            return urlImages;
+        })
+        .then(urlImages => carroussel(carroussel2, urlImages))// fonction carroussel qui transforme les images en carroussel
 }

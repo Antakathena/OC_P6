@@ -1,16 +1,5 @@
 alert("ok carousel");
 
-/*Récupérer les données avec fetch
-fetch("http://localhost:8000/api/v1/titles/")
-    .then((reponse) => {
-        return reponse.json
-    })
-    .then((donnees) => {
-        for (let post of donnees) {
-            console.log(post.title)
-        }
-*/
-
 const affiche = document.getElementById("affiche");
 
 // fetch("http://localhost:8000/api/v1/titles/?year=&min_year=2020&sort_by=-imdb_score&country=USA")

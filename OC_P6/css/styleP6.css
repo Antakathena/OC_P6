@@ -98,71 +98,104 @@ footer {
     font-size: 1.5rem;
 }
 
-.container{
-    width: auto;
-    height: 300px;
-    border:solid 4px rgb(139, 218, 102);
-    box-shadow: 0 0 14px rgba(0,0,0,0,3);
-    position: relative;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    align-items: flex-start;
-}
+#meilleur-film {
+    background-color: tomato;
+    padding : 10px;
+    margin-left: auto;
+    margin-right: auto;
 
-.container :first-child {
-    align-self: center;
 }
-
 #img {
     height: 100%;
     padding: 10px;
+    float: left;
 }
-
 #infos-meilleur-film {
     font-size: 1rem;
     padding: 10px;
+    margin: 10px;
+}
+#titre1 {
+    margin : 10px;
+    font-size: 2rem;
+    font-weight: bolder;
 }
 
+dt {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+dd {
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+}
 .bouton {
     position: absolute;
-    width: 70px;
+    width: 50px;
     cursor: pointer;
-    top:150px;
+    top:120px;
+    border-radius: 50px;
 }
-
 .g{
     left:0;
-    opacity:0.4;
+    opacity:0.7;
     transform:rotate(0deg);
     transition:3.0 s ease;
 }
 .d{
     right:0;
-    opacity: 0.4;
+    opacity: 0.7;
     transform:rotate(180deg);
     transition:3.0 s ease;
 }
-
 .g:hover {
     transform:rotate(0deg) scale(1.1);
     opacity: 1;
     transition:3.0 s ease;
 }
-
 .d:hover {
     transform:rotate(180deg) scale(1.1);
     opacity: 1;
     transition:3.0 s ease;
 }
-
+.carroussel {
+    background-color: rgb(71, 157, 255);
+    width: 900px;
+    height: 320px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    align-items: flex-start;
+    align-self: center;
+}
 #carroussel1 {
     background-color: tomato;
+}
+.photo{
     width: auto;
-    height: 300px;
+    height: 290px;
+    margin: 20px;
+    display: inline-block; /*sinon les images ont tendance à retourner à la ligne*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position: center;
 }
 
-#meilleur-film {
-    background-color: tomato;
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+    height: 320px;
+    border:solid 4px rgb(139, 218, 102);
+    box-shadow: 0 0 14px rgba(0,0,0,0,3);
+    position: relative;
+    /* overflow: hidden; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    align-items: flex-start;
+    align-self: center;
 }
