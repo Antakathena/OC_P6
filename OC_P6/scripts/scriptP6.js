@@ -17,10 +17,6 @@ window.onload = () => {
     fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
         .then(reponse => reponse.json())
         .then(reponse2 => console.log(reponse2.results[0]))
-
-
-    fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
-        .then(reponse => reponse.json())
         .then(SetMeilleurFilm);
 
     // Ici on récupère les infos du meilleur film
@@ -57,7 +53,7 @@ window.onload = () => {
         })
 
     // carroussel
-    function carroussel(carroussel, urlImages) {
+    var fonctionCarroussel = function carroussel(carroussel, urlImages) {
         nbr = 10; /*nombre d'images dans le carroussel*/
         p = 0; /*position par défaut*/
         g = carroussel.getElementsByClassName("g")[0];
@@ -86,6 +82,22 @@ window.onload = () => {
             carroussel.style.transform = "translate(" + p * 300 + "px)";
         }
     }
+    function get7films(urlAPI, carroussel, fonctionCarroussel) {
+        fetch(urlAPI)
+            .then(reponse => reponse.json())
+            .then(reponse2 => {
+                console.log(reponse2)
+                return reponse2
+            })
+            .then(reponse2 => {// pour chaque element(film) dans le json, récupérer l'image
+                urlImages = [];
+                reponse2.results.forEach(element => urlImages.push(element.image_url));
+                console.log(urlImages);
+                return urlImages;
+            })
+            .then(urlImages => fonctionCarroussel(carroussel, urlImages))
+    }
+
 
     var carroussel1 = document.getElementById('carroussel1');
     // Là on récupère toute la catégorie fantasy (voir dans l'inspecteur du navigateur l'onglet Network et la console)
@@ -101,7 +113,7 @@ window.onload = () => {
             console.log(urlImages);
             return urlImages;
         })
-        .then(urlImages => carroussel(carroussel1, urlImages))// fonction carroussel qui transforme les images en carroussel
+        .then(urlImages => fonctionCarroussel(carroussel1, urlImages))// fonction carroussel qui transforme les images en carroussel
 
 
     var carroussel2 = document.getElementById('carroussel2');
@@ -118,5 +130,18 @@ window.onload = () => {
             console.log(urlImages);
             return urlImages;
         })
-        .then(urlImages => carroussel(carroussel2, urlImages))// fonction carroussel qui transforme les images en carroussel
+        .then(urlImages => fonctionCarroussel(carroussel2, urlImages))// fonction carroussel qui transforme les images en carroussel
+
+    var carroussel3 = document.getElementById('carroussel3');
+    get7films(
+        "http://localhost:8000/api/v1/titles?genre=animation&sort_by=-imdb_score&page_size=7&page=1",
+        carroussel3,
+        fonctionCarroussel)
+
+    var carroussel4 = document.getElementById('carroussel4');
+    get7films(
+        "http://localhost:8000/api/v1/titles?genre=musical&sort_by=-imdb_score&page_size=7&page=1",
+        carroussel4,
+        fonctionCarroussel)
+
 }
