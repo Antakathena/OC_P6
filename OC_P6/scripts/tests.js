@@ -32,7 +32,7 @@ function carroussel(carroussel, urlImages) {
 
 
 var carroussel1 = document.getElementById('carroussel1');
-
+var urlImages = []
 // Là on récupère toute la catégorie fantasy (voir dans l'inspecteur du navigateur l'onglet Network et la console)
 let result1 = fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
     .then(reponse => reponse.json())
@@ -59,6 +59,4 @@ let result2 = fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score&pag
         console.log(urlImages);
         return urlImages;
     })
-
-let urlImages = [].concat(result1, result1)
 carroussel(carroussel1, urlImages)// fonction carroussel qui transforme les images en carroussel

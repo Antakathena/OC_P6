@@ -87,10 +87,9 @@ window.onload = () => {
         }
     }
 
-
     var carroussel1 = document.getElementById('carroussel1');
     // Là on récupère toute la catégorie fantasy (voir dans l'inspecteur du navigateur l'onglet Network et la console)
-    fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
+    fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score&page_size=7&page=1")
         .then(reponse => reponse.json())
         .then(reponse2 => {
             console.log(reponse2)
@@ -107,7 +106,7 @@ window.onload = () => {
 
     var carroussel2 = document.getElementById('carroussel2');
     // Là on récupère toute la catégorie fantasy (voir dans l'inspecteur du navigateur l'onglet Network et la console)
-    fetch("http://localhost:8000/api/v1/titles?genre=fantasy&sort_by=-imdb_score")
+    fetch("http://localhost:8000/api/v1/titles?genre=fantasy&sort_by=-imdb_score&page_size=7&page=1")
         .then(reponse => reponse.json())
         .then(reponse2 => {
             console.log(reponse2)
