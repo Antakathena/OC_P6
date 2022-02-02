@@ -59,6 +59,7 @@ h2 {
 }
 
 h3 {
+    margin: 20px;
     font-size: 2rem;
     color: rgb(0, 0, 0);
     text-align: center;
@@ -132,7 +133,7 @@ dd {
     text-align: center;
 }
 .bouton {
-    position: absolute;
+    position: absolute; z-index: 3;
     width: 50px;
     cursor: pointer;
     top:120px;
@@ -161,22 +162,22 @@ dd {
     transition:3.0 s ease;
 }
 .carroussel {
-    background-color: rgb(71, 157, 255);
-    width: 900px;
-    height: 320px;
+    /* background-color: rgb(71, 157, 255); */
+    width: 798px;
+    height: 288px;
     justify-content: center;
     align-items: center;
     display: flex;
     align-items: flex-start;
     align-self: center;
 }
-#carroussel1 {
-    background-color: tomato;
-}
+/* #carroussel1 {
+    background-color: tomato; 
+}*/
 .photo{
     width: auto;
-    height: 290px;
-    margin: 20px;
+    height: auto;
+    margin: 9px;
     display: inline-block; /*sinon les images ont tendance à retourner à la ligne*/
     background-size: contain;
     background-repeat: no-repeat;
@@ -187,12 +188,12 @@ dd {
 .container{
     margin-left: auto;
     margin-right: auto;
-    width: 900px;
-    height: 320px;
+    width: 798px;
+    height: 288px;
     border:solid 4px rgb(139, 218, 102);
     box-shadow: 0 0 14px rgba(0,0,0,0,3);
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
     justify-content: center;
     align-items: center;
     display: flex;
