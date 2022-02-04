@@ -43,44 +43,74 @@
     </header>
 
     <main>
-        <section id="section-meilleur-film">
+        <!-- The Modal -->
+        <section id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-header">
+                    <h2>Meilleur Film</h2>
+                </div>
+                <div class="modal-body">
+                    <h3 id="titlemodal">Informations</h3>
+                    <dl>
+                        <dt>L’image de la pochette du film</dt>
+                        <dd id="image"></dd>
+                        <dt>Le Titre du film</dt>
+                        <dd id="titre"></dd>
+                        <dt>Le genre complet du film</dt>
+                        <dd id="genre"></dd>
+                        <dt>Sa date de sortie</dt>
+                        <dd id="sortie"></dd>
+                        <dt>Son Rated</dt>
+                        <dd id="rated"></dd>
+                        <dt>Son score Imdb</dt>
+                        <dd id="score"></dd>
+                        <dt>Son réalisateur</dt>
+                        <dd id="réalisateur"></dd>
+                        <dt>La liste des acteurs</dt>
+                        <dd id="acteurs"></dd>
+                        <dt>Sa durée</dt>
+                        <dd id="durée"></dd>
+                        <dt>Le pays d’origine</dt>
+                        <dd id="origine"></dd>
+                        <dt>Le résultat au Box Office</dt>
+                        <dd id="résultat"></dd>
+                        <dt>Le résumé du film</dt>
+                        <dd id="résumé"></dd>
+                    </dl>
+                </div>
+                <div class="modal-footer">
+                </div>
+                <p>Et voilà, vous savez tout...</p>
+            </div>
+
+        </section>
+
+        <section>
             <h2>Meilleur film</h2>
-            <article>
+            <article id="article-meilleur-film">
+
                 <div class="container" id="meilleur-film">
-                    <img src="" alt="" id="img1">
+                    <!-- Trigger/Open The Modal -->
+                    <button id="myBtn"><img src="" alt="" id="img1"></button>
                     <div id="infos-meilleur-film">
                         <h3></h3>
                         <dl>
-                            <dt>titre :</dt>
-                            <dd id="titre1"></dd>
-                            <dt>résumé :</dt>
-                            <dd id="résumé1"></dd>
+                            <div id="titre1"></div>
+                            <div id="résumé1"></div>
                         </dl>
+                        <button name="infos-meilleur-film" class="favorite styled" type="button">En savoir
+                            plus</button>
                     </div>
+
                 </div>
+
+
             </article>
             </div>
 
-            <!-- Trigger/Open The Modal -->
-            <button id="myBtn"><img src="assets/images/icone.JPG" />En savoir plus</button>
 
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div class="modal-header">
-                        <h2>Meilleur Film</h2>
-                    </div>
-                    <div class="modal-body">
-                        <h3 id="titlemodal">Ici devraient arriver les informations du film</h3>
-                        <p>Il faut faire de son mieux dans le temps imparti.</p>
-                    </div>
-                    <div class="modal-footer">
-                    </div>
-                    <p>Pochette du film, titre, genre, date...</p>
-                </div>
 
         </section>
 
