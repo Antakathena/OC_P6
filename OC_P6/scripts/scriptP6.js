@@ -7,17 +7,17 @@ window.onload = () => {
     var data = {};
     var meilleurFilm = null
 
-    function SetMeilleurFilm(data) {
-        // c'est ici qu'on modifie l'image de la balise du meilleur film
-        console.log('Données du meilleur film ');
-        console.log(data.results[0].id);
-        console.log(data.results[0].image_url);
-    }
+    // function SetMeilleurFilm(data) {
+    //     // c'est ici qu'on modifie l'image de la balise du meilleur film
+    //     console.log('Données du meilleur film ');
+    //     console.log(data.results[0].id);
+    //     console.log(data.results[0].image_url);
+    // }
 
-    fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
-        .then(reponse => reponse.json())
-        .then(reponse2 => console.log(reponse2.results[0]))
-        .then(SetMeilleurFilm);
+    // fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
+    //     .then(reponse => reponse.json())
+    //     .then(reponse2 => console.log(reponse2.results[0]))
+    //     .then(SetMeilleurFilm);
 
     // Ici on récupère les infos du meilleur film
     const meilleurFilmImg = document.getElementById("img1")
@@ -135,5 +135,34 @@ window.onload = () => {
         article4,
         carroussel4,
         fonctionCarroussel)
+
+    //modal
+
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close");
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
 }
