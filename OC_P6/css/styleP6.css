@@ -9,7 +9,7 @@
 header {
 margin-bottom: 50px;
 padding: 20px;
-background-color: rgb(112, 112, 112);
+background-color: rgb(0, 0, 0);
 display:flex;
 flex-wrap:wrap;
 justify-content: space-around;
@@ -28,7 +28,7 @@ nav {
     color:#fff;
     font-size:1.5rem;
     font-family:sans-serif;
-    text-shadow: 2px 2px 0 rgb(0, 0, 0);
+    text-shadow: 2px 2px 0 rgb(136, 0, 0);
 }
 nav li ul {
     margin:0;
@@ -42,20 +42,23 @@ nav li:hover ul {
 }
 
 nav li ul li:hover {
-    background-color:red;
+    background-color:rgb(153, 0, 167);
 }
 
 h1 {
     font-size: 2.5rem;
-    color: rgb(255, 255, 255);
-    text-shadow: 2px 2px 0 rgb(0, 0, 0);
+    color: rgb(255, 43, 43);
+    text-shadow: 2px 2px 0 rgb(136, 0, 0);
 }
 
 /* style body */
 
 h2 {
+    margin : 20px;
     padding: 20px;
     font-size: 2.5rem;
+    color: rgb(255, 0, 0);
+    text-shadow: 1px 0 0 rgb(0, 0, 0), -1px 0 0 rgb(0, 0, 0), 0 1px 0 rgb(0, 0, 0), 0 -1px 0 rgb(0, 0, 0), 1px 1px rgb(0, 0, 0), -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0);
     border: white;
     text-align: center;
     justify-content: center;
@@ -64,7 +67,7 @@ h2 {
 h3 {
     margin: 20px;
     font-size: 2rem;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     text-align: center;
     justify-content: center;
     }
@@ -73,7 +76,7 @@ body {
     margin:0;
     align-items:center;
     justify-content:center;
-    background-color: rgb(92, 173, 34);
+    background-color: rgb(66, 66, 66);
     background-size:cover;
     height: 100% /*changé depuis vh pour un footer bien placé*/
 }
@@ -91,12 +94,11 @@ main {
 footer {
     bottom: 0;
     padding: 20px;
-    background-color: grey;
+    background-color: rgb(0, 0, 0);
     display:flex;
     flex-wrap:wrap;
     justify-content: space-around;
     min-width: 100%;
-
     }
 
 #footer {
@@ -107,7 +109,7 @@ footer {
 /* style section meilleur film */
 
 #meilleur-film {
-    background-color: tomato;
+    background-color: rgb(255, 255, 255);
     margin-left: auto;
     margin-right: auto;
 
@@ -116,7 +118,7 @@ footer {
     height: 100%;
 }
 
-#img1 {
+#img-meilleur-film {
     height: 100%;
     object-fit: contain;
     float: left;
@@ -126,10 +128,13 @@ footer {
     padding: 10px;
     margin: 10px;
 }
-#titre1 {
-    margin : 10px;
+#titre-meilleur-film {
     font-size: 2rem;
     font-weight: bolder;
+}
+#résumé-meilleur-film{
+    padding: 20px;
+    font-size: 1.5rem;
 }
 
 dt {
@@ -204,7 +209,7 @@ dd {
     margin-right: auto;
     width: 798px;
     height: 288px;
-    border:solid 4px rgb(139, 218, 102);
+    border:solid 4px rgb(187, 37, 37);
     box-shadow: 0 0 14px rgba(0,0,0,0,3);
     position: relative;
     overflow: hidden;

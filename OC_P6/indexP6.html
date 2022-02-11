@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<!-- A corriger:
+le menu disparait avant d'arriver en bas(musical)
+fixer la barre header?
+lier le bouton en savoir plus à la modale
+corriger la modale du meilleur Film
+envoyer l'img à la place de l'url dans les modales -->
 
 <head>
     <title>JustStreamIt</title>
@@ -24,16 +30,16 @@
                     <a href="indexP6.html">Catégories</a>
                     <ul>
                         <li>
-                            <a href="indexP6.html">Mieux notés</a>
+                            <a href="#mieux-notés">Mieux notés</a>
                         </li>
                         <li>
-                            <a href="indexP6.html">Fantasy</a>
+                            <a href="#fantasy">Fantasy</a>
                         </li>
                         <li>
-                            <a href="indexP6.html">Sci-Fi</a>
+                            <a href="#animation">Animation</a>
                         </li>
                         <li>
-                            <a href="indexP6.html">Animation</a>
+                            <a href="#musical">Musical</a>
                         </li>
 
                     </ul>
@@ -87,35 +93,29 @@
 
         </section>
 
+        <!-- The Meilleur film -->
         <section>
             <h2>Meilleur film</h2>
             <article id="article-meilleur-film">
-
                 <div class="container" id="meilleur-film">
                     <!-- Trigger/Open The Modal -->
-                    <button id="myBtn"><img src="" alt="" id="img1"></button>
+                    <button id="myBtn"><img src="" alt="" id="img-meilleur-film"></button>
                     <div id="infos-meilleur-film">
                         <h3></h3>
-                        <dl>
-                            <div id="titre1"></div>
-                            <div id="résumé1"></div>
-                        </dl>
-                        <button name="infos-meilleur-film" class="favorite styled" type="button">En savoir
-                            plus</button>
+                        <div>
+                            <div id="titre-meilleur-film"></div>
+                            <div id="résumé-meilleur-film"></div>
+                        </div>
+                        <button name="infos-meilleur-film" class="favorite styled" type="button">En savoir plus</button>
                     </div>
-
                 </div>
-
-
             </article>
             </div>
-
-
-
         </section>
 
-        <section>
-            <h2>Sélection (carroussels)</h2>
+        <!-- The Carrousels -->
+        <section id="carroussels">
+            <h2>Sélections des meilleurs films par catégorie</h2>
             <article id="mieux-notés">
                 <div>
                     <h3>Mieux notés</h3>
@@ -170,7 +170,6 @@
     <footer>
         <p id="footer">JustStreamIt</p>
     </footer>
-
 
 </body>
 

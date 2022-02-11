@@ -4,8 +4,6 @@
 
 // Ici on récupère le json du meilleur film
 window.onload = () => {
-
-    const articleMeilleurFilm = document.getElementById("article-meilleur-film")
     const modal = document.getElementById("myModal");
     // Get the button that opens the modal
     const btn = document.getElementById("myBtn");
@@ -23,9 +21,9 @@ window.onload = () => {
     //     .then(SetMeilleurFilm);
 
     // Ici on récupère les infos du meilleur film
-    const meilleurFilmImg = document.getElementById("img1")
-    const titre1 = document.getElementById("titre1")
-    const resume1 = document.getElementById("résumé1")
+    const meilleurFilmImg = document.getElementById("img-meilleur-film")
+    const titreMeilleurFilm = document.getElementById("titre-meilleur-film")
+    const resumeMeilleurFilm = document.getElementById("résumé-meilleur-film")
     const infosModale1 = modal.getElementsByTagName("dd")
 
     fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
@@ -37,11 +35,13 @@ window.onload = () => {
                 return null
             }
         })
+        // On récupère sur la page des meilleurs films affiche, titre et ID du meilleur
         .then(reponse2 => {
             meilleurFilmImg.src = reponse2.results[0].image_url
-            titre1.innerText = reponse2.results[0].title
+            titreMeilleurFilm.innerText = reponse2.results[0].title
             return reponse2.results[0].id
         })
+        // Puis on va sur la page de ce film
         .then(
             filmId => fetch(`http://localhost:8000/api/v1/titles/` + filmId.toString())
         )
@@ -52,6 +52,7 @@ window.onload = () => {
                 console.log("ERREUR");
             }
         })
+        // et on récupère les informations démandées sur la page de ce film, qu'on place dans data[]
         .then(reponse2 => {
             var datas = [];
             console.log(reponse2)
@@ -59,9 +60,11 @@ window.onload = () => {
                 reponse2.image_url, reponse2.title, reponse2.genres, reponse2.date_published,
                 reponse2.rated, reponse2.imdb_score, reponse2.directors, reponse2.actors,
                 reponse2.duration, reponse2.countries, reponse2.avg_vote, reponse2.description)
+
+            // enfin on envoie les infos où on en a besoin
             for (i = 0; i < datas.length; i++) {
                 infosModale1[i].innerText = datas[i]
-                resume1.innerText = reponse2.description
+                resumeMeilleurFilm.innerText = reponse2.description
             }
         })
 
