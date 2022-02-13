@@ -7,92 +7,115 @@ window.onload = () => {
     const modal = document.getElementById("myModal");
     // Get the button that opens the modal
     const btn = document.getElementById("myBtn");
-
-    // function SetMeilleurFilm(data) {
-    //     // c'est ici qu'on modifie l'image de la balise du meilleur film
-    //     console.log('Données du meilleur film ');
-    //     console.log(data.results[0].id);
-    //     console.log(data.results[0].image_url);
-    // }
-
-    // fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
-    //     .then(reponse => reponse.json())
-    //     .then(reponse2 => console.log(reponse2.results[0]))
-    //     .then(SetMeilleurFilm);
+    const btn2 = document.getElementById("en-savoir-plus");
 
     // Ici on récupère les infos du meilleur film
-    const meilleurFilmImg = document.getElementById("img-meilleur-film")
-    const titreMeilleurFilm = document.getElementById("titre-meilleur-film")
-    const resumeMeilleurFilm = document.getElementById("résumé-meilleur-film")
-    const infosModale1 = modal.getElementsByTagName("dd")
+    const meilleurFilmImg = document.getElementById("img-meilleur-film");
+    const titreMeilleurFilm = document.getElementById("titre-meilleur-film");
+    const resumeMeilleurFilm = document.getElementById("résumé-meilleur-film");
+    const infosModale1 = modal.getElementsByTagName("dd");
+    const affiche = modal.querySelector("#affiche");
 
-    fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
-        .then(reponse => {
-            if (reponse.ok) {
-                return reponse.json()
-            } else {
-                console.log("ERREUR");
-                return null
-            }
-        })
-        // On récupère sur la page des meilleurs films affiche, titre et ID du meilleur
+    // carroussel
+    // var filmsIDs = []
+    // console.log(filmsIDs)
+    var getInfosFilm = async function getInfosFilm(filmId) {
+        let infos;
+        infos = fetch(`http://localhost:8000/api/v1/titles/` + filmId.toString())
+            .then(reponse => {
+                if (reponse.ok) {
+                    return reponse.json()
+                } else {
+                    console.log("ERREUR");
+                    return null
+                }
+            })
+            .then(reponse => {
+                if (reponse !== null) {
+                    return reponse
+                }
+                else {
+                    console.log("PAS BON")
+                    console.log("Contenu filmId : ")
+                    console.log(filmId)
+                    return fetch(`http://localhost:8000/api/v1/titles/` + filmId.id.toString())
+                        .then(reponse => {
+                            if (reponse.ok) {
+                                return reponse.json()
+                            } else {
+                                console.log("ERREUR");
+                                return null
+                            }
+                        })
+                }
+            })
+
+        return infos; // return "la chaine de montage", la promesse au code appelant qui va enchaîner ses traitements propres
+    }
+
+    var peuplerModale = function peuplerModale(filmId) {
+        getInfosFilm(filmId)
+
+            .then(reponse => {
+                console.log(reponse)
+                var datas = [];
+                affiche.src = reponse.image_url;
+                datas.push(
+                    reponse.title, reponse.genres, reponse.date_published,
+                    reponse.rated, reponse.imdb_score, reponse.directors, reponse.actors,
+                    reponse.duration, reponse.countries, reponse.avg_vote, reponse.description)
+                for (i = 0; i < datas.length; i++) {
+                    infosModale1[i].innerText = datas[i]
+                }
+            })
+    }
+
+    var findMeilleurFilm = async function findMeilleurFilm() {
+        return fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
+            .then(reponse => {
+                if (reponse.ok) {
+                    return reponse.json()
+                } else {
+                    console.log("ERREUR");
+                    return null
+                }
+            })
+            .then(reponse2 => {
+                return reponse2
+            })
+    }
+
+
+    // On récupère sur la page des meilleurs films affiche, titre et ID du meilleur
+    findMeilleurFilm()
         .then(reponse2 => {
             meilleurFilmImg.src = reponse2.results[0].image_url
             titreMeilleurFilm.innerText = reponse2.results[0].title
             return reponse2.results[0].id
         })
         // Puis on va sur la page de ce film
-        .then(
-            filmId => fetch(`http://localhost:8000/api/v1/titles/` + filmId.toString())
-        )
-        .then(reponse => {
-            if (reponse.ok) {
-                return reponse.json()
-            } else {
-                console.log("ERREUR");
-            }
-        })
+        .then(getInfosFilm)
         // et on récupère les informations démandées sur la page de ce film, qu'on place dans data[]
-        .then(reponse2 => {
-            var datas = [];
-            console.log(reponse2)
-            datas.push(
-                reponse2.image_url, reponse2.title, reponse2.genres, reponse2.date_published,
-                reponse2.rated, reponse2.imdb_score, reponse2.directors, reponse2.actors,
-                reponse2.duration, reponse2.countries, reponse2.avg_vote, reponse2.description)
+        .then(infosFilms => {
+            resumeMeilleurFilm.innerText = infosFilms.description
+            peuplerModale(infosFilms)
 
-            // enfin on envoie les infos où on en a besoin
-            for (i = 0; i < datas.length; i++) {
-                infosModale1[i].innerText = datas[i]
-                resumeMeilleurFilm.innerText = reponse2.description
-            }
+            // var datas = [];
+            // console.log(infosFilms)
+            // datas.push(
+            //     infosFilms.image_url,
+            //     infosFilms.title, infosFilms.genres, infosFilms.date_published,
+            //     infosFilms.rated, infosFilms.imdb_score, infosFilms.directors, infosFilms.actors,
+            //     infosFilms.duration, infosFilms.countries, infosFilms.avg_vote, infosFilms.description)
+
+            // //enfin on envoie les infos où on en a besoin
+            // affiche.src = infosFilms.image_url
+            // for (i = 0; i < datas.length; i++) {
+            //     console.log(infosModale1[i])
+            //     console.log(datas[i])
+            //     infosModale1[i].innerHTML = datas[i]
+            // }
         })
-
-    // carroussel
-    // var filmsIDs = []
-    // console.log(filmsIDs)
-
-    var peuplerModale = function peuplerModale(filmId) {
-        fetch(`http://localhost:8000/api/v1/titles/` + filmId.toString())
-            .then(reponse => {
-                if (reponse.ok) {
-                    return reponse.json()
-                } else {
-                    console.log("ERREUR");
-                }
-            })
-            .then(reponse2 => {
-                console.log(reponse2)
-                var datas = [];
-                datas.push(
-                    reponse2.image_url, reponse2.title, reponse2.genres, reponse2.date_published,
-                    reponse2.rated, reponse2.imdb_score, reponse2.directors, reponse2.actors,
-                    reponse2.duration, reponse2.countries, reponse2.avg_vote, reponse2.description)
-                for (i = 0; i < datas.length; i++) {
-                    infosModale1[i].innerText = datas[i]
-                }
-            })
-    }
 
     var fonctionCarroussel = function carroussel(article, carroussel, imageData) {
         // urlimages: [ID, URL]
@@ -205,6 +228,32 @@ window.onload = () => {
     // When the user clicks on the button, open the modal
     btn.onclick = function () {
         modal.style.display = "block";
+        findMeilleurFilm()
+            .then(meilleurFilm => {
+
+                return meilleurFilm.results[0].id
+            })
+            .then(filmID => {
+                console.log("ID après findMeilleurFilm()")
+                console.log(filmID)
+                return getInfosFilm(filmID)
+            })
+            .then(peuplerModale)
+    }
+
+    btn2.onclick = function () {
+        modal.style.display = "block";
+        findMeilleurFilm()
+            .then(meilleurFilm => {
+
+                return meilleurFilm.results[0].id
+            })
+            .then(filmID => {
+                console.log("ID après findMeilleurFilm()")
+                console.log(filmID)
+                return getInfosFilm(filmID)
+            })
+            .then(peuplerModale)
     }
 
     // When the user clicks on <span> (x), close the modal

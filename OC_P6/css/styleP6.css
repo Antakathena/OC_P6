@@ -14,6 +14,7 @@ display:flex;
 flex-wrap:wrap;
 justify-content: space-around;
 min-width: 100%;
+/* position: fixed; z-index: 2; */
 }
 
 
@@ -137,18 +138,6 @@ footer {
     font-size: 1.5rem;
 }
 
-dt {
-    font-size: 1.5rem;
-    font-weight: bolder;
-    display : hidden;
-}
-dd {
-    padding: 10px;
-    margin: 10px;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
 /* style carroussels */
 
 .bouton {
@@ -228,7 +217,7 @@ dd {
 .modal {
     display: none; /* Hidden by default */
     position: fixed;/* Stay in place */
-    z-index: 2; /* Sit on top */
+    z-index: 3; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -240,13 +229,43 @@ dd {
   
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color: #8f8f8f;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
+    padding: 10px 15%;
+    border: 4px solid darkred;
     width: 80%; /* Could be more or less, depending on screen size */
 }
   
+/* Film Infos */
+#div-affiche {
+    width: 28vh;
+    height: 40vh;
+    margin: auto;
+    padding: auto;
+    background-color: black;
+    border:solid 4px rgb(187, 37, 37);
+    box-shadow: 0 0 14px rgba(0,0,0,0,3);
+    align-items: center;
+
+}
+#affiche {
+    height: 100%;
+    object-fit: contain;
+    background-size:cover;
+    background-position: center;
+}
+dt {
+    color: #fff;    
+    font-size: 1.3rem;
+    font-weight: bolder;
+}
+dd {
+
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.5rem;
+    text-align: left;
+}
 /* The Close Button */
 .close {
     color: #aaa;

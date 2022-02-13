@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <!-- A corriger:
+corriger la modale du meilleur Film    
+envoyer l'img à la place de l'url dans les modales
 le menu disparait avant d'arriver en bas(musical)
 fixer la barre header?
 lier le bouton en savoir plus à la modale
-corriger la modale du meilleur Film
-envoyer l'img à la place de l'url dans les modales -->
+
+améliorer l'aspect des images dans les carroussels (taille, bordure?) -->
 
 <head>
     <title>JustStreamIt</title>
@@ -55,34 +57,33 @@ envoyer l'img à la place de l'url dans les modales -->
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <div class="modal-header">
-                    <h2>Meilleur Film</h2>
+                    <h2>Selection</h2>
                 </div>
                 <div class="modal-body">
                     <h3 id="titlemodal">Informations</h3>
+                    <div id="div-affiche"><img src="" alt="" id="affiche"></div>
                     <dl>
-                        <dt>L’image de la pochette du film</dt>
-                        <dd id="image"></dd>
-                        <dt>Le Titre du film</dt>
+                        <dt>Titre :</dt>
                         <dd id="titre"></dd>
-                        <dt>Le genre complet du film</dt>
+                        <dt>Genres :</dt>
                         <dd id="genre"></dd>
-                        <dt>Sa date de sortie</dt>
+                        <dt>Date de sortie :</dt>
                         <dd id="sortie"></dd>
-                        <dt>Son Rated</dt>
+                        <dt>Rated :</dt>
                         <dd id="rated"></dd>
-                        <dt>Son score Imdb</dt>
+                        <dt>Score Imdb :</dt>
                         <dd id="score"></dd>
-                        <dt>Son réalisateur</dt>
+                        <dt>Réalisateur :</dt>
                         <dd id="réalisateur"></dd>
-                        <dt>La liste des acteurs</dt>
+                        <dt>Liste des acteurs :</dt>
                         <dd id="acteurs"></dd>
-                        <dt>Sa durée</dt>
+                        <dt>Durée :</dt>
                         <dd id="durée"></dd>
-                        <dt>Le pays d’origine</dt>
+                        <dt>Pays d’origine :</dt>
                         <dd id="origine"></dd>
-                        <dt>Le résultat au Box Office</dt>
+                        <dt>Résultat au Box Office :</dt>
                         <dd id="résultat"></dd>
-                        <dt>Le résumé du film</dt>
+                        <dt>Résumé du film :</dt>
                         <dd id="résumé"></dd>
                     </dl>
                 </div>
@@ -106,7 +107,8 @@ envoyer l'img à la place de l'url dans les modales -->
                             <div id="titre-meilleur-film"></div>
                             <div id="résumé-meilleur-film"></div>
                         </div>
-                        <button name="infos-meilleur-film" class="favorite styled" type="button">En savoir plus</button>
+                        <button id="en-savoir-plus" name="infos-meilleur-film" class="favorite styled" type="button">En
+                            savoir plus</button>
                     </div>
                 </div>
             </article>
