@@ -2,23 +2,27 @@
 // Pour activer : wsl : cd OCM+tab, source env/bin/activate, python manage.py runserver
 // Pour déactiver : ctrl+C pour quitter le serveur, deactivate pour quitter l'env virtuel
 
-// Ici on récupère le json du meilleur film
 window.onload = () => {
     const modal = document.getElementById("myModal");
-    // Get the button that opens the modal
+    // Get the button that opens the modal for Best Movie
     const btn = document.getElementById("myBtn");
     const btn2 = document.getElementById("en-savoir-plus");
 
-    // Ici on récupère les infos du meilleur film
+    // Get infos for best movie
     const meilleurFilmImg = document.getElementById("img-meilleur-film");
     const titreMeilleurFilm = document.getElementById("titre-meilleur-film");
     const resumeMeilleurFilm = document.getElementById("résumé-meilleur-film");
-    const infosModale1 = modal.getElementsByTagName("dd");
+
+    // Get infos for modals
+    const infosModale = modal.getElementsByTagName("dd");
     const affiche = modal.querySelector("#affiche");
 
-    // carroussel
-    // var filmsIDs = []
-    // console.log(filmsIDs)
+    // Functions
+    /**
+     * récupère le Json des infos complètes sur un film
+     * @param {*} filmId l'ID du film
+     * @returns {Json} informations détaillées du film
+     */
     var getInfosFilm = async function getInfosFilm(filmId) {
         let infos;
         infos = fetch(`http://localhost:8000/api/v1/titles/` + filmId.toString())
@@ -52,11 +56,15 @@ window.onload = () => {
 
         return infos; // return "la chaine de montage", la promesse au code appelant qui va enchaîner ses traitements propres
     }
-
+    /**
+     * créé une liste à partir des infos voulues pour le film et peuple la modale
+     * @param {*} filmId
+     */
     var peuplerModale = function peuplerModale(filmId) {
         getInfosFilm(filmId)
 
             .then(reponse => {
+                console.log("reponse après getInfosFilm")
                 console.log(reponse)
                 var datas = [];
                 affiche.src = reponse.image_url;
@@ -65,11 +73,14 @@ window.onload = () => {
                     reponse.rated, reponse.imdb_score, reponse.directors, reponse.actors,
                     reponse.duration, reponse.countries, reponse.avg_vote, reponse.description)
                 for (i = 0; i < datas.length; i++) {
-                    infosModale1[i].innerText = datas[i]
+                    infosModale[i].innerText = datas[i]
                 }
             })
     }
-
+    /**
+     * récupère les infos de base pour le meilleur film
+     * @returns {Json} les infos du meilleur film as Json
+     */
     var findMeilleurFilm = async function findMeilleurFilm() {
         return fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
             .then(reponse => {
@@ -81,45 +92,18 @@ window.onload = () => {
                 }
             })
             .then(reponse2 => {
-                return reponse2
+                return reponse2.results[0]
             })
     }
-
-
-    // On récupère sur la page des meilleurs films affiche, titre et ID du meilleur
-    findMeilleurFilm()
-        .then(reponse2 => {
-            meilleurFilmImg.src = reponse2.results[0].image_url
-            titreMeilleurFilm.innerText = reponse2.results[0].title
-            return reponse2.results[0].id
-        })
-        // Puis on va sur la page de ce film
-        .then(getInfosFilm)
-        // et on récupère les informations démandées sur la page de ce film, qu'on place dans data[]
-        .then(infosFilms => {
-            resumeMeilleurFilm.innerText = infosFilms.description
-            peuplerModale(infosFilms)
-
-            // var datas = [];
-            // console.log(infosFilms)
-            // datas.push(
-            //     infosFilms.image_url,
-            //     infosFilms.title, infosFilms.genres, infosFilms.date_published,
-            //     infosFilms.rated, infosFilms.imdb_score, infosFilms.directors, infosFilms.actors,
-            //     infosFilms.duration, infosFilms.countries, infosFilms.avg_vote, infosFilms.description)
-
-            // //enfin on envoie les infos où on en a besoin
-            // affiche.src = infosFilms.image_url
-            // for (i = 0; i < datas.length; i++) {
-            //     console.log(infosModale1[i])
-            //     console.log(datas[i])
-            //     infosModale1[i].innerHTML = datas[i]
-            // }
-        })
-
+    /**
+     * Créé un carroussel de 7 images dont 4 sont visibles.
+     * Les 3 premières sont doublées pour pouvoir faire tourner entièrement le carroussel.
+     * (Il y a donc 6 positions possibles pour l'apparition des images.)
+     * @param {*} article position dans le HTML, correspond à une catégorie de films
+     * @param {*} carroussel container à remplir
+     * @param {*} imageData urlimages: [ID, URL] (l'ID sert pour peupler la modale)
+     */
     var fonctionCarroussel = function carroussel(article, carroussel, imageData) {
-        // urlimages: [ID, URL]
-        console.log(imageData);
         nbr = 10; /*nombre d'images dans le carroussel*/
         p = 0; /*position par défaut*/
         g = article.getElementsByClassName("g")[0];
@@ -148,90 +132,94 @@ window.onload = () => {
             if (p > -3) { /*arrête l'animation du carroussel pour arrêter quand il n'y a plus d'images*/
                 p--;
             } else {
-                p = 3; /*le principe c'est de retourner à la position la plus à droite mais ça marche pas (encore)*/
+                p = 3; /*le principe est de retourner à la position opposée*/
             }
             carroussel.style.transform = "translate(" + p * 199 + "px)";
         }
-
         g.onclick = function () {
-            if (p < 3) { /*arrête l'animation du carroussel à -6 pour arrêter quand il n'y a plus d'images*/
+            if (p < 3) { /* même chose dans l'autre sens */
                 p++;
             } else {
-                p = -3;/*le principe c'est de retourner à la postition la plus à gauche mais ça marche pas (encore)*/
+                p = -3;
             }
             carroussel.style.transform = "translate(" + p * 199 + "px)";
         }
     }
-
+    /**
+     * Créé imageData pour nourrir la fonction carroussel :
+     * Récupère les 7 premiers films d'une URL donnée dans l'API OCMovies,
+     * Puis créé une liste de tuple contenant les image et l'ID pour chacun de ces films
+     * @param {*} urlAPI la référence d'une page de l'API OCMovies contenant 7 films (&page_size=7&page=1)
+     * @param {*} article cf fonction Carroussel
+     * @param {*} carroussel cf fonction Carroussel
+     * @param {*} fonctionCarroussel 
+     */
     function get7films(urlAPI, article, carroussel, fonctionCarroussel) {
         fetch(urlAPI)
             .then(reponse => reponse.json())
             .then(reponse2 => {
-                console.log(reponse2) // là on a les id de tous dans la liste 0-6 => à récup pour modales
-                // reponse2.results.forEach(element => filmsIDs.push(element.id));
+                // là on a les id de tous dans la liste 0-6
                 return reponse2
             })
-            .then(reponse2 => {// pour chaque element(film) dans le json, récupérer l'image
+            .then(reponse2 => {
+                // pour chaque element(film) dans le json, récupérer l'image
                 imageData = [];
                 reponse2.results.forEach(element => imageData.push([element.id, element.image_url]));
-                // console.log(urlImages);
                 return imageData;
             })
             .then(imageData => fonctionCarroussel(article, carroussel, imageData))
         // fonction carroussel qui transforme les images en carroussel
     }
 
-    // const listeArticle = document.getElementsByClassName("catégorie")
-    // const listeCarroussel = document.getElementsByClassName("carroussel")
-    // const listeUrlCategorie= [liste des url en dur]
-    // for(i=0; i<4; i++) faire comme plus haut
+    // MAIN
 
-    var article1 = document.getElementById("mieux-notés");
-    var carroussel1 = document.getElementById('carroussel1');
-    get7films(
-        "http://localhost:8000/api/v1/titles?sort_by=-imdb_score&page_size=7&page=1",
-        article1,
-        carroussel1,
-        fonctionCarroussel)
+    // On récupère sur la page des meilleurs films affiche, titre et ID du meilleur
+    findMeilleurFilm()
+        .then(reponse2 => {
+            meilleurFilmImg.src = reponse2.image_url
+            titreMeilleurFilm.innerText = reponse2.title
+            return reponse2.id
+        })
+        // Puis on va sur la page de ce film
+        .then(getInfosFilm)
+        // et on récupère les informations démandées sur la page de ce film
+        // on affiche le résumé et peupler modale récupère les infos pour la modale
+        .then(infosFilms => {
+            resumeMeilleurFilm.innerText = infosFilms.description
+            peuplerModale(infosFilms.id)
+        })
 
-    var article2 = document.getElementById("fantasy");
-    var carroussel2 = document.getElementById('carroussel2');
-    get7films(
-        "http://localhost:8000/api/v1/titles?genre=fantasy&sort_by=-imdb_score&page_size=7&page=1",
-        // voir dans l'inspecteur du navigateur l'onglet Network et la console ce qui est récupéré
-        article2,
-        carroussel2,
-        fonctionCarroussel)
 
-    var article3 = document.getElementById("animation");
-    var carroussel3 = document.getElementById('carroussel3');
-    get7films(
-        "http://localhost:8000/api/v1/titles?genre=animation&sort_by=-imdb_score&page_size=7&page=1",
-        article3,
-        carroussel3,
-        fonctionCarroussel)
+    // carroussels
 
-    var article4 = document.getElementById("musical");
-    var carroussel4 = document.getElementById('carroussel4');
-    get7films(
-        "http://localhost:8000/api/v1/titles?genre=musical&sort_by=-imdb_score&page_size=7&page=1",
-        article4,
-        carroussel4,
-        fonctionCarroussel)
-
+    const listeArticle = document.getElementsByClassName("catégorie")
+    const listeCarroussel = document.getElementsByClassName("carroussel")
+    const listeUrlCategorie = [
+        "sort_by=-imdb_score",
+        "genre=fantasy&sort_by=-imdb_score",
+        "genre=animation&sort_by=-imdb_score",
+        "genre=musical&sort_by=-imdb_score"
+    ]
+    console.log(listeArticle)
+    console.log(listeCarroussel)
+    for (i = 0; i < 4; i++)
+        get7films(
+            "http://localhost:8000/api/v1/titles?" + listeUrlCategorie[i] + "&page_size=7&page=1",
+            // voir dans l'inspecteur du navigateur l'onglet Network et la console ce qui est récupéré 
+            listeArticle[i],
+            listeCarroussel[i],
+            fonctionCarroussel)
 
     //modales
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close");
-
     // When the user clicks on the button, open the modal
     btn.onclick = function () {
         modal.style.display = "block";
         findMeilleurFilm()
             .then(meilleurFilm => {
-
-                return meilleurFilm.results[0].id
+                return meilleurFilm.id
             })
             .then(filmID => {
                 console.log("ID après findMeilleurFilm()")
@@ -240,13 +228,12 @@ window.onload = () => {
             })
             .then(peuplerModale)
     }
-
     btn2.onclick = function () {
         modal.style.display = "block";
         findMeilleurFilm()
             .then(meilleurFilm => {
 
-                return meilleurFilm.results[0].id
+                return meilleurFilm.id
             })
             .then(filmID => {
                 console.log("ID après findMeilleurFilm()")
@@ -255,12 +242,10 @@ window.onload = () => {
             })
             .then(peuplerModale)
     }
-
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
     }
-
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
