@@ -151,23 +151,23 @@ footer {
     left:0;
     opacity:0.7;
     transform:rotate(0deg);
-    transition:3.0 s ease;
+    transition:3.0s ease;
 }
 .d{
     right:0;
     opacity: 0.7;
     transform:rotate(180deg);
-    transition:3.0 s ease;
+    transition:3.0s ease;
 }
 .g:hover {
     transform:rotate(0deg) scale(1.1);
     opacity: 1;
-    transition:3.0 s ease;
+    transition:3.0s ease;
 }
 .d:hover {
     transform:rotate(180deg) scale(1.1);
     opacity: 1;
-    transition:3.0 s ease;
+    transition:3.0s ease;
 }
 .carroussel {
     /* background-color: rgb(71, 157, 255); */
@@ -199,7 +199,7 @@ footer {
     width: 798px;
     height: 288px;
     border:solid 4px rgb(187, 37, 37);
-    box-shadow: 0 0 14px rgba(0,0,0,0,3);
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
     justify-content: center;
@@ -241,10 +241,9 @@ footer {
     width: 28vh;
     height: 40vh;
     margin: auto;
-    padding: auto;
     background-color: black;
     border:solid 4px rgb(187, 37, 37);
-    box-shadow: 0 0 14px rgba(0,0,0,0,3);
+    box-shadow: 0 0 14px rgba(0,0,0,0.4);
     align-items: center;
 
 }
