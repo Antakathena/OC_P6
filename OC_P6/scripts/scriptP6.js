@@ -17,11 +17,12 @@ window.onload = () => {
     const infosModale = modal.getElementsByTagName("dd");
     const affiche = modal.querySelector("#affiche");
 
-    // Functions
+    // FUNCTIONS
+
     /**
      * récupère le Json des infos complètes sur un film
      * @param {*} filmId l'ID du film
-     * @returns {Json} informations détaillées du film
+     * @returns {Json} les informations détaillées du film as Json
      */
     var getInfosFilm = async function getInfosFilm(filmId) {
         let infos;
@@ -62,7 +63,6 @@ window.onload = () => {
      */
     var peuplerModale = function peuplerModale(filmId) {
         getInfosFilm(filmId)
-
             .then(reponse => {
                 console.log("reponse après getInfosFilm")
                 console.log(reponse)
@@ -79,7 +79,7 @@ window.onload = () => {
     }
     /**
      * récupère les infos de base pour le meilleur film
-     * @returns {Json} les infos du meilleur film as Json
+     * @returns {Json} les informations de base du meilleur film as Json
      */
     var findMeilleurFilm = async function findMeilleurFilm() {
         return fetch("http://localhost:8000/api/v1/titles?sort_by=-imdb_score")
@@ -173,8 +173,10 @@ window.onload = () => {
 
     // MAIN
 
-    // On récupère sur la page des meilleurs films affiche, titre et ID du meilleur
+    // MEILLEUR FILM :
+
     findMeilleurFilm()
+        // On récupère sur la page des meilleurs films affiche, titre et ID du meilleur
         .then(reponse2 => {
             meilleurFilmImg.src = reponse2.image_url
             titreMeilleurFilm.innerText = reponse2.title
@@ -190,7 +192,7 @@ window.onload = () => {
         })
 
 
-    // carroussels
+    // CARROUSSELS :
 
     const listeArticle = document.getElementsByClassName("catégorie")
     const listeCarroussel = document.getElementsByClassName("carroussel")
@@ -210,10 +212,8 @@ window.onload = () => {
             listeCarroussel[i],
             fonctionCarroussel)
 
-    //modales
+    // MODALES :
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close");
     // When the user clicks on the button, open the modal
     btn.onclick = function () {
         modal.style.display = "block";
@@ -243,8 +243,16 @@ window.onload = () => {
             .then(peuplerModale)
     }
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
+    // Get the <span> element that closes the modal
+    var span = document.getElementById("close");
+    function hide(id) {
+        var close = document.getElementById(id);
+        close.style.display = "none";
+        console.log(close.style.display);
+        setTimeout(() => { console.log(close.style.display); });
+    }
+    span.onclick = function (event) {
+        hide('myModal'); event.stopPropagation();
     }
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {

@@ -100,7 +100,7 @@ footer {
     flex-wrap:wrap;
     justify-content: space-around;
     min-width: 100%;
-    }
+}
 
 #footer {
     color: white;
@@ -118,7 +118,6 @@ footer {
 #myBtn {
     height: 100%;
 }
-
 #img-meilleur-film {
     height: 100%;
     object-fit: contain;
@@ -212,8 +211,6 @@ footer {
 /* style modales*/
 
 /* The Modal (background) */
-
-
 .modal {
     display: none; /* Hidden by default */
     position: fixed;/* Stay in place */
@@ -234,6 +231,14 @@ footer {
     padding: 10px 15%;
     border: 4px solid darkred;
     width: 80%; /* Could be more or less, depending on screen size */
+}
+#close {
+    float: right;
+    margin: 210px 150px 0px 0px;
+    border: 4px solid darkred;
+    font-size: 1.5rem;
+    color: darkred
+
 }
   
 /* Film Infos */
@@ -279,7 +284,6 @@ dd {
     text-decoration: none;
     cursor: pointer;
 }
-
 .styled {
     border: 0;
     line-height: 2.5;
@@ -297,11 +301,9 @@ dd {
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
                 inset -2px -2px 3px rgba(0, 0, 0, .6);
 }
-
 .styled:hover {
     background-color: rgba(255, 0, 0, 1);
 }
-
 .styled:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
