@@ -3,19 +3,22 @@
 // Pour déactiver : ctrl+C pour quitter le serveur, deactivate pour quitter l'env virtuel
 
 window.onload = () => {
-    const modal = document.getElementById("myModal");
-    // Get the button that opens the modal for Best Movie
-    const btn = document.getElementById("myBtn");
-    const btn2 = document.getElementById("en-savoir-plus");
+
 
     // Get infos for best movie
     const meilleurFilmImg = document.getElementById("img-meilleur-film");
     const titreMeilleurFilm = document.getElementById("titre-meilleur-film");
     const resumeMeilleurFilm = document.getElementById("résumé-meilleur-film");
 
+    // Get the button that opens the modal for Best Movie
+    const btn = document.getElementById("myBtn");
+    const btn2 = document.getElementById("en-savoir-plus");
+
     // Get infos for modals
     const infosModale = modal.getElementsByTagName("dd");
     const affiche = modal.querySelector("#affiche");
+    const modal = document.getElementById("myModal");
+
 
     // FUNCTIONS
 
@@ -123,7 +126,6 @@ window.onload = () => {
                 peuplerModale(idImg);
                 modal.style.display = "block";
             }
-
             bouton.appendChild(img);
             // ... créer le bouton qui va utiliser urlData[0] (l'id), et mapper son onclick à peuplerModale
             carroussel.appendChild(bouton); /*on ajoute les nouvelles img au container principal*/
@@ -176,6 +178,7 @@ window.onload = () => {
     // MEILLEUR FILM :
 
     findMeilleurFilm()
+        // renvoie le json des infos simples du film
         // On récupère sur la page des meilleurs films affiche, titre et ID du meilleur
         .then(reponse2 => {
             meilleurFilmImg.src = reponse2.image_url
@@ -202,8 +205,6 @@ window.onload = () => {
         "genre=animation&sort_by=-imdb_score",
         "genre=musical&sort_by=-imdb_score"
     ]
-    console.log(listeArticle)
-    console.log(listeCarroussel)
     for (i = 0; i < 4; i++)
         get7films(
             "http://localhost:8000/api/v1/titles?" + listeUrlCategorie[i] + "&page_size=7&page=1",
