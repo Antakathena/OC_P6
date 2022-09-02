@@ -15,10 +15,9 @@ window.onload = () => {
     const btn2 = document.getElementById("en-savoir-plus");
 
     // Get infos for modals
+    const modal = document.getElementById("myModal");
     const infosModale = modal.getElementsByTagName("dd");
     const affiche = modal.querySelector("#affiche");
-    const modal = document.getElementById("myModal");
-
 
     // FUNCTIONS
 
